@@ -233,7 +233,7 @@
                 </div>
 -->
                 <div class="product">
-                    <img src="res\IMG_20241123_131317.jpg" alt="">
+                    <img src="res\IMG_20241123_131317.jpg" alt="" class="product-img">
                     <div class="product-content">
                         <h3>Go'k barak</h3>
                         <p>Bahoriy go'k barak</p>
@@ -243,7 +243,7 @@
                 </div>
 
                 <div class="product">
-                    <img src="res\IMG20241126160624.jpg" alt="">
+                    <img src="res\IMG20241126160624.jpg" alt="" class="product-img">
                     <div class="product-content"></div>
                     <h3>Odi</h3>
                     <p>Qisqo izox</p>
@@ -251,7 +251,7 @@
                     <a href="#contact" class="btn">Buyurtma barish</a>
                 </div>
                 <div class="product">
-                    <img src="res\IMG20241127143853.jpg" alt="">
+                    <img src="res\IMG20241127143853.jpg" alt="" class="product-img">
                     <div class="product-content"></div>
                     <h3>Odi</h3>
                     <p>Qisqo izox</p>
@@ -259,7 +259,7 @@
                     <a href="#contact" class="btn">Buyurtma barish</a>
                 </div>
                 <div class="product">
-                    <img src="res\IMG20241127143908.jpg" alt="">
+                    <img src="res\IMG20241127143908.jpg" alt="" class="product-img">
                     <div class="product-content"></div>
                     <h3>Odi</h3>
                     <p>Qisqo izox</p>
@@ -267,7 +267,7 @@
                     <a href="#contact" class="btn">Buyurtma barish</a>
                 </div>
                 <div class="product">
-                    <img src="res\IMG20241127143944.jpg" alt="">
+                    <img src="res\IMG20241127143944.jpg" alt="" class="product-img">
                     <div class="product-content"></div>
                     <h3>Odi</h3>
                     <p>Qisqo izox</p>
@@ -275,7 +275,7 @@
                     <a href="#contact" class="btn">Buyurtma barish</a>
                 </div>
                 <div class="product">
-                    <img src="res\photo_2025-06-24_13-18-20.jpg" alt="">
+                    <img src="res\photo_2025-06-24_13-18-20.jpg" alt="" class="product-img">
                     <div class="product-content"></div>
                     <h3>Odi</h3>
                     <p>Qisqo izox</p>
@@ -283,7 +283,7 @@
                     <a href="#contact" class="btn">Buyurtma barish</a>
                 </div>
                 <div class="product">
-                    <img src="res\photo_2025-06-24_13-18-48.jpg" alt="">
+                    <img src="res\photo_2025-06-24_13-18-48.jpg" alt="" class="product-img">
                     <div class="product-content"></div>
                     <h3>Odi</h3>
                     <p>Qisqo izox</p>
@@ -291,7 +291,7 @@
                     <a href="#contact" class="btn">Buyurtma barish</a>
                 </div>
                 <div class="product">
-                    <img src="res\IMG20241126155421.jpg" alt="">
+                    <img src="res\IMG20241126155421.jpg" alt="" class="product-img">
                     <div class="product-content"></div>
                     <h3>Odi</h3>
                     <p>Qisqo izox</p>
@@ -300,7 +300,7 @@
                 </div>
 
                 <div class="product">
-                    <img src="res\photo_2025-06-24_13-19-05.jpg" alt="">
+                    <img src="res\photo_2025-06-24_13-19-05.jpg" alt="" class="product-img">
                     <div class="product-content"></div>
                     <h3>Odi</h3>
                     <p>Qisqo izox</p>
@@ -334,6 +334,39 @@
     <footer>
         <p>&copy; 2025 Marjona Cake Xiva. Mehr bilan tayyorlangan.</p>
     </footer>
+
+    <!-- Lightbox modal -->
+    <div id="lightbox-modal" style="display:none;position:fixed;z-index:9999;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.85);justify-content:center;align-items:center;">
+        <span id="lightbox-close" style="position:absolute;top:30px;right:40px;font-size:3em;color:#fff;cursor:pointer;font-family:sans-serif;z-index:10001;">&times;</span>
+        <img id="lightbox-img" src="" alt="" style="max-width:90vw;max-height:90vh;box-shadow:0 0 40px #000;border-radius:12px;">
+    </div>
+
+    <script>
+    // Lightbox logic
+    document.querySelectorAll('.product-img').forEach(function(img) {
+        img.addEventListener('click', function() {
+            var modal = document.getElementById('lightbox-modal');
+            var modalImg = document.getElementById('lightbox-img');
+            modalImg.src = this.src;
+            modal.style.display = 'flex';
+        });
+    });
+    document.getElementById('lightbox-close').onclick = function() {
+        document.getElementById('lightbox-modal').style.display = 'none';
+    };
+    // Закрытие по клику вне картинки
+    document.getElementById('lightbox-modal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            this.style.display = 'none';
+        }
+    });
+    // Закрытие по ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            document.getElementById('lightbox-modal').style.display = 'none';
+        }
+    });
+    </script>
 </body>
 
 </html>
