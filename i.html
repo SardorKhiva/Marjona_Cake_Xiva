@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indira Pishiriq — Торты и Кондитерские изделия</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #fff8f0;
+            color: #333;
+        }
+
+        header {
+            background: #ffb6b9;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        nav {
+            margin-top: 10px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .product {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+            width: 300px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .product h3 {
+            margin: 15px 0 10px;
+        }
+
+        .product p {
+            font-size: 1em;
+            color: #666;
+        }
+
+        .product .price {
+            font-size: 1.2em;
+            color: #e75480;
+            margin: 10px 0;
+        }
+
+        .product button {
+            background: #e75480;
+            color: #fff;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        footer {
+            background: #ffb6b9;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 700px) {
+            .products {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Indira Pishiriq</h1>
+        <nav>
+            <a href="#products">Продукция</a>
+            <a href="#about">О нас</a>
+            <a href="#contact">Контакты</a>
+        </nav>
+    </header>
+    <div class="container">
+        <section id="products">
+            <h2>Наши изделия</h2>
+            <div class="products">
+                <div class="product">
+                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80"
+                        alt="Торт">
+                    <h3>Торт «Шоколадный рай»</h3>
+                    <p>Нежный шоколадный бисквит с кремом и ягодами.</p>
+                    <div class="price">1500₽</div>
+                    <button>Заказать</button>
+                </div>
+                <div class="product">
+                    <img src="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=400&q=80"
+                        alt="Капкейки">
+                    <h3>Капкейки «Ванильные»</h3>
+                    <p>Легкие капкейки с ванильным кремом и посыпкой.</p>
+                    <div class="price">600₽ / 6 шт.</div>
+                    <button>Заказать</button>
+                </div>
+                <div class="product">
+                    <img src="https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=400&q=80"
+                        alt="Эклеры">
+                    <h3>Эклеры</h3>
+                    <p>Классические эклеры с заварным кремом.</p>
+                    <div class="price">500₽ / 5 шт.</div>
+                    <button>Заказать</button>
+                </div>
+            </div>
+        </section>
+        <section id="about" style="margin-top:40px;">
+            <h2>О нас</h2>
+            <p>
+                Мы — команда профессиональных кондитеров, создающих вкусные и красивые десерты на заказ. Используем
+                только натуральные ингредиенты и индивидуальный подход к каждому клиенту!
+            </p>
+        </section>
+        <section id="contact" style="margin-top:40px;">
+            <h2>Контакты</h2>
+            <p>Телефон: +7 (900) 123-45-67</p>
+            <p>Email: info@indira-pishiriq.ru</p>
+            <p>Instagram: @indira_pishiriq</p>
+        </section>
+    </div>
+    <footer>
+        &copy; 2024 Indira Pishiriq. Все права защищены.
+    </footer>
+</body>
+
+</html>
