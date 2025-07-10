@@ -1,60 +1,137 @@
+<!-- Bu HTML hujjatining boshlanishi -->
 <!DOCTYPE html>
+<!-- Hujjat tili o'zbek tilida -->
 <html lang="uz">
 
+<!-- Hujjatning bosh qismi -->
+
 <head>
+    <!-- Belgilar to'plami UTF-8 -->
     <meta charset="UTF-8">
+    <!-- Mobil qurilmalarda to'g'ri ko'rsatish uchun viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Sahifa sarlavhasi -->
     <title>Marjona Cake Xiva — Tortlar va Pishiriqlar</title>
+    <!-- Google Fonts bilan tez ulanish uchun -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- Google Fonts statik resurslari uchun -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Lobster va Montserrat shriftlarini ulash -->
     <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:wght@400;700&display=swap"
         rel="stylesheet">
+    <!-- Ichki CSS uslublar -->
     <style>
-        /* Кнопка смены темы (день/ночь) */
+        /* Kun/tun rejimini almashtirish tugmasi uchun uslub */
         #theme-toggle {
+            /* Pastki chap burchakda, "Tepaga" tugmasi bilan bir qatorda, lekin chapda joylashadi */
             position: fixed;
-            top: 24px;
-            right: 24px;
+            bottom: 32px;
+            left: 0;
             z-index: 10010;
             background: var(--primary-color);
             color: #fff;
             border: none;
             border-radius: 50%;
-            width: 48px;
-            height: 48px;
+            width: 56px;
+            height: 56px;
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.13);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5em;
+            font-size: 2em;
             cursor: pointer;
             transition: background 0.3s, box-shadow 0.3s;
             outline: none;
         }
 
-        @media (max-width: 600px) {
+        #scroll-top {
+            position: fixed;
+            bottom: 32px;
+            right: 0;
+            left: auto;
+            z-index: 10010;
+            background: #fff;
+            color: var(--primary-color);
+            border: none;
+            border-radius: 50%;
+            width: 56px;
+            height: 56px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.13);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            cursor: pointer;
+            transition: background 0.3s, box-shadow 0.3s;
+            outline: none;
+        }
+
+        /* "Tepaga" tugmasi pastki chap burchakda, lekin o'ngda joylashadi */
+        #scroll-top {
+            /* "Tepaga" tugmasi pastki o'ng burchakda joylashadi */
+            position: fixed;
+            bottom: 32px;
+            right: 0;
+            left: auto;
+            z-index: 10010;
+            background: #fff;
+            color: var(--primary-color);
+            border: none;
+            border-radius: 50%;
+            width: 56px;
+            height: 56px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.13);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            cursor: pointer;
+            transition: background 0.3s, box-shadow 0.3s;
+            outline: none;
+        }
+
+
+
+        /* 900px dan kichik ekranlar uchun tugmalar joylashuvi va o'lchami */
+        @media (max-width: 900px) {
+
+            #theme-toggle,
+            #scroll-top {
+                bottom: 12px;
+                width: 44px;
+                height: 44px;
+                font-size: 1.3em;
+            }
+
             #theme-toggle {
-                top: 12px;
-                right: 12px;
+                left: 0;
+            }
+
+            #scroll-top {
+                right: 0;
+                left: auto;
+            }
+        }
+
+        /* 600px dan kichik ekranlar uchun tugmalar o'lchami */
+        @media (max-width: 600px) {
+
+            #theme-toggle,
+            #scroll-top {
                 width: 40px;
                 height: 40px;
                 font-size: 1.1em;
             }
         }
 
-        @media (max-width: 900px) {
-            #theme-toggle {
-                top: 12px;
-                right: 12px;
-            }
-        }
-
+        /* Navigatsiya paneli uchun uslub */
         nav {
+            /* Navigatsiya nisbiy pozitsiyada */
             position: relative;
         }
 
 
-
+        /* CSS o'zgaruvchilar: asosiy ranglar, shriftlar va boshqalar */
         :root {
             --primary-color: #d63384;
             --secondary-color: #ffb6c1;
@@ -65,38 +142,67 @@
             --heading-color-light: var(--primary-color);
         }
 
+
+        /* Butun sahifa uchun asosiy uslublar */
         body {
+            /* Asosiy shrift */
             font-family: var(--body-font);
+            /* Chegaralar yo'q */
             margin: 0;
             padding: 0;
+            /* Orqa fon rangi */
             background-color: var(--background-color);
+            /* Matn rangi */
             color: var(--text-color);
+            /* Qator balandligi */
             line-height: 1.6;
         }
 
+
+        /* Kontentni markazga va cheklangan kenglikda joylash uchun */
         .container {
+            /* Maksimal kenglik */
             max-width: 1200px;
+            /* Markazga joylash */
             margin: 0 auto;
+            /* Yonlardan bo'sh joy */
             padding: 0 20px;
+            /* Namuna uchun rang (faol emas) */
             /* color: yellow; */
         }
 
+
+        /* Sahifa sarlavhasi (header) uchun uslublar */
         header {
+            /* Fon gradient */
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            /* Matn rangi oq */
             color: white;
+            /* Yuqoridan va pastdan bo'sh joy */
             padding: 60px 0;
+            /* Matnni markazga */
             text-align: center;
         }
 
+
+        /* Sarlavha (h1) uchun uslub */
         header h1 {
+            /* Sarlavha uchun maxsus shrift */
             font-family: var(--heading-font);
+            /* Katta o'lcham */
             font-size: 4em;
+            /* Chegaralar yo'q */
             margin: 0;
+            /* Yengil soya */
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
 
+
+        /* Header ostidagi kichik matn uchun */
         header p {
+            /* O'rtacha kattalik */
             font-size: 1.2em;
+            /* Yuqoridan bo'sh joy */
             margin-top: 10px;
         }
 
@@ -109,153 +215,328 @@
         }
 
         nav .container {
+            /* Flex konteynerni yoqish */
             display: flex;
+            /* Elementlarni gorizontal markazga joylash */
             justify-content: center;
+            /* Elementlarni vertikal markazga joylash */
             align-items: center;
         }
 
+        /* Navigatsiya havolalari uchun uslublar */
         nav a {
+            /* Matn rangi oq */
             color: white;
+            /* Tagiga chizilmasin */
             text-decoration: none;
+            /* Yonlardan bo'sh joy */
             margin: 0 20px;
+            /* Qalin shrift */
             font-weight: bold;
+            /* Rang o'zgarishi animatsiyasi */
             transition: color 0.3s ease;
         }
 
+        /* Navigatsiya havolasi ustiga olib borilganda */
         nav a:hover {
+            /* Orqa fon rangi bilan bir xil rang */
             color: var(--background-color);
         }
 
+        /* Har bir bo'lim uchun tashqi bo'sh joy */
         section {
+            /* Yuqoridan va pastdan bo'sh joy */
             padding: 60px 0;
         }
 
+        /* Bo'lim sarlavhasi (h2) uchun uslublar */
         section h2 {
+            /* Markazga joylash */
             text-align: center;
+            /* Sarlavha uchun shrift */
             font-family: var(--heading-font);
+            /* Katta o'lcham */
             font-size: 3em;
+            /* Yorqin rang */
             color: var(--heading-color-light);
+            /* Kursor pointer */
             cursor: pointer;
+            /* Pastdan bo'sh joy */
             margin-bottom: 40px;
+            /* Rang o'zgarishi animatsiyasi */
             transition: color 0.3s;
         }
 
+        /* Bo'limdagi oddiy matn uchun uslub */
         section p {
+            /* Kursor pointer */
             cursor: pointer;
+            /* Qizil rang */
             color: #ff0000;
+            /* Rang o'zgarishi animatsiyasi */
             transition: color 0.3s;
         }
 
         .products {
+            /* Mahsulotlar ro'yxatini grid ko'rinishida joylash */
             display: grid;
+            /* Har bir ustun kamida 300px, maksimal 1 fraksiyali bo'ladi */
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            /* Har bir mahsulot orasida 40px bo'sh joy */
             gap: 40px;
         }
 
         .product {
+            /* Mahsulot kartasi orqa foni oq rangda */
             background: #fff;
+            /* Burchaklari yumaloq */
             border-radius: 15px;
+            /* Yengil soya effekti */
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            /* Ichidagi rasm va matn tashqariga chiqmasin */
             overflow: hidden;
+            /* Matnni markazga */
             text-align: center;
+            /* Karta ustiga olib borilganda animatsiya */
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .product:hover {
+            /* Karta ustiga olib borilganda biroz yuqoriga ko'tariladi */
             transform: translateY(-10px);
+            /* Soya kuchayadi */
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
         }
 
         .product img {
+            /* Rasm kartaning to'liq kengligini egallaydi */
             width: 100%;
+            /* Rasm nisbati 4:3 bo'ladi */
             aspect-ratio: 4/3;
+            /* Balandligi avtomatik */
             height: auto;
+            /* Rasm konteynerga sig'diriladi, ortiqchasi kesiladi */
             object-fit: cover;
+            /* Orqa fon oq rangda */
             background: #fff;
+            /* Blok element sifatida ko'rsatiladi */
             display: block;
+            /* Burchaklari dumaloq */
             border-radius: 18px;
+            /* Yengil pushti soya */
             box-shadow: 0 2px 16px rgba(214, 51, 132, 0.08);
+            /* Soya va radius animatsiyasi */
             transition: box-shadow 0.3s, border-radius 0.3s;
         }
 
-        /* Скругление для всех img внутри .product и .video-wrapper */
+        /* .product va .video-wrapper ichidagi barcha img larni burchaklarini dumaloq qilish */
+        /* .product va .video-wrapper ichidagi barcha img va iframe lar burchaklari dumaloq bo'ladi */
         .product img,
         .video-wrapper img,
         .video-wrapper iframe {
+            /* Burchaklarni dumaloq qilish */
             border-radius: 18px;
         }
 
         .product img:hover {
+            /* Rasm ustiga olib borilganda soya kuchayadi */
             box-shadow: 0 6px 32px rgba(214, 51, 132, 0.18);
+            /* Burchaklari yanada dumaloq bo'ladi */
             border-radius: 28px;
         }
 
         .product-content {
+            /* Mahsulot kartasi matni uchun ichki bo'sh joy */
             padding: 25px;
         }
 
         .product h3 {
+            /* Sarlavha yuqoridan bo'sh joysiz */
             margin-top: 0;
+            /* Sarlavha kattaligi */
             font-size: 1.5em;
+            /* Sarlavha rangi asosiy rangda */
             color: var(--primary-color);
         }
 
         .product .price {
+            /* Narx matni kattaligi */
             font-size: 1.3em;
+            /* Qalin shrift */
             font-weight: bold;
+            /* Narx rangi to'q kulrang */
             color: #333;
+            /* Yuqori va pastdan bo'sh joy */
             margin: 15px 0;
         }
 
         .btn {
+            /* Tugma orqa fon rangi asosiy rangda */
             background-color: var(--primary-color);
+            /* Tugma matni oq rangda */
             color: white;
+            /* Chegarasi yo'q */
             border: none;
+            /* Tugma ichki bo'sh joyi */
             padding: 12px 30px;
+            /* Tugma burchaklari yumaloq */
             border-radius: 50px;
+            /* Kursor pointerga aylanadi */
             cursor: pointer;
+            /* Tugma matni kattaligi */
             font-size: 1em;
+            /* Qalin shrift */
             font-weight: bold;
+            /* Tagiga chizilmasin */
             text-decoration: none;
+            /* Inline-block ko'rinish */
             display: inline-block;
+            /* Orqa fon va transform animatsiyasi */
             transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
         .btn:hover {
+            /* Tugma ustiga olib borilganda orqa fon rangi o'zgaradi */
             background-color: #c21e6f;
+            /* Tugma biroz kattalashadi */
             transform: scale(1.05);
         }
 
         #about p,
         #contact p {
+            /* Matn maksimal kengligi 800px bo'ladi */
             max-width: 800px;
+            /* Matn konteyneri markazga joylashadi */
             margin: 0 auto;
+            /* Matn markazga tekislanadi */
             text-align: center;
+            /* Matn kattaligi 1.1em */
             font-size: 1.1em;
         }
 
         #contact ul {
+            /* Ro'yxat belgilarini olib tashlash */
             list-style: none;
+            /* Ichki bo'sh joy yo'q */
             padding: 0;
+            /* Yuqoridan 20px bo'sh joy */
             margin-top: 20px;
+            /* Ro'yxat markazga tekislanadi */
             text-align: center;
         }
 
         #contact li {
+            /* Har bir element pastidan 10px bo'sh joy */
             margin-bottom: 10px;
         }
 
         footer {
+            /* Footer orqa fon rangi to'q kulrang */
             background-color: #333;
+            /* Footer matni oq rangda */
             color: white;
+            /* Matn markazga */
             text-align: center;
+            /* Yuqoridan va pastdan 20px bo'sh joy */
             padding: 20px 0;
+            /* Yuqoridan 40px bo'sh joy */
             margin-top: 40px;
         }
 
         footer p {
+            /* Footer matni uchun tashqi bo'sh joy yo'q */
             margin: 0;
+            /* Matn kattaligi 0.9em */
             font-size: 0.9em;
+        }
+
+        /* rasm slaydlari */
+        /* Mahsulot kartasidagi rasm slayderi uchun konteyner */
+        .product-slider {
+            /* Nisbiy pozitsiya, tugmalar va slaydlar uchun asos */
+            position: relative;
+            /* To'liq kenglik */
+            width: 100%;
+            /* Balandlikni foiz orqali belgilash (4:3 nisbati) */
+            height: 0;
+            /* 4:3 nisbati uchun pastdan bo'sh joy */
+            padding-bottom: 75%;
+            /* Slayder pastidan bo'sh joy */
+            margin-bottom: 18px;
+        }
+
+        /* Har bir slayd (img yoki iframe) uchun uslub */
+        .product-slider .slide {
+            /* Mutlaq pozitsiya, ustma-ust joylashish */
+            position: absolute;
+            /* Yuqoridan va chapdan 0 */
+            top: 0;
+            left: 0;
+            /* To'liq kenglik va balandlik */
+            width: 100%;
+            height: 100%;
+            /* Rasm yoki video konteynerga sig'diriladi */
+            object-fit: cover;
+            /* Ko'rinmas holatda */
+            opacity: 0;
+            /* Bosib bo'lmaydi */
+            pointer-events: none;
+            /* Ko'rinish animatsiyasi */
+            transition: opacity 0.4s;
+        }
+
+        /* Faol slayd ko'rinadi va bosib bo'ladi */
+        .product-slider .slide.active {
+            /* Ko'rinadi */
+            opacity: 1;
+            /* Bosib bo'ladi */
+            pointer-events: auto;
+        }
+
+        /* Slayder tugmalari uchun uslub */
+        .slider-btn {
+            /* Mutlaq pozitsiya, slayder ichida */
+            position: absolute;
+            /* Vertikal markazlash */
+            top: 50%;
+            /* Tugmani markazga ko'chirish */
+            transform: translateY(-50%);
+            /* Oq yarim shaffof fon */
+            background: rgba(255, 255, 255, 0.8);
+            /* Chegarasi yo'q */
+            border: none;
+            /* Dumaloq tugma */
+            border-radius: 50%;
+            /* Kengligi va balandligi */
+            width: 36px;
+            height: 36px;
+            /* Tugma ichidagi ikonka kattaligi */
+            font-size: 1.5em;
+            /* Tugma rangi asosiy rangda */
+            color: var(--primary-color);
+            /* Kursor pointerga aylanadi */
+            cursor: pointer;
+            /* Boshqa elementlardan yuqoriroq */
+            z-index: 2;
+            /* Yengil soya */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            /* Orqa fon animatsiyasi */
+            transition: background 0.2s;
+        }
+
+        /* Oldingi tugma chapda */
+        .slider-btn.prev {
+            left: 10px;
+        }
+
+        /* Keyingi tugma o'ngda */
+        .slider-btn.next {
+            right: 10px;
+        }
+
+        /* Tugma bosilganda orqa fon o'zgaradi */
+        .slider-btn:active {
+            background: #ffe0f0;
         }
     </style>
 </head>
@@ -264,10 +545,7 @@
     <header>
         <h1>🍰𝐌𝐚𝐫𝐣𝐨𝐧𝐚 𝐂𝐚𝐤𝐞 𝐗𝐢𝐯𝐚 🎂</h1>
 
-        <!-- Кнопка смены темы (день/ночь) -->
-        <button id="theme-toggle" aria-label="Сменить тему" title="День/Ночь">
-            <span id="theme-icon">🌙</span>
-        </button>
+
 
         <p>Mehr bilan tayyorlangan to'rt va pishiriqlari</p>
     </header>
@@ -280,13 +558,78 @@
         </div>
     </nav>
 
+    <!-- "Kun/Tun" va "Tepaga" tugmalari pastki chap burchakda, yonma-yon -->
+    <button id="theme-toggle" aria-label="Сменить тему" title="День/Ночь">
+        <span id="theme-icon">🌙</span>
+    </button>
+    <button id="scroll-top" aria-label="Вверх" title="Вверх">
+        <span style="pointer-events:none;">↑</span>
+    </button>
+
     <div class="container">
         <section id="products">
             <h2>Bizning shirin menyumiz</h2>
 
             <div class="products">
+
+                <!-- jannatim_onam_tort -->
                 <div class="product">
-                    <img src="res\img_20241123_131317.jpg" alt="Go'k barak" class="product-img">
+                    <div class="product-slider">
+                        <iframe class="slide" src="https://www.youtube.com/embed/V_zWTCbIzao?si=romidO4CF3tBKTyu"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
+                            style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:15px;">
+                        </iframe>
+                        <img src="res\jannatim_onam_tort_2.jpg" alt="jannatim_onam_tort_2"
+                            class="product-img slide active">
+                        <img src="res\jannatim_onam_tort.jpg" alt="jannatim_onam_tort" class="product-img slide">
+                        <button class="slider-btn prev" aria-label="Oldingi rasm">&#8592;</button>
+                        <button class="slider-btn next" aria-label="Keyingi rasm">&#8594;</button>
+                    </div>
+                    <div class="product-content">
+                        <h3>Jannatim onam to'rti</h3>
+                        <p>Yaqinlaringgiz uchun to'rt</p>
+                        <div class="price"> Ncha so'm </div>
+                        <a href="tel:+998914266662" class="btn">Buyurtma barish</a>
+                    </div>
+                </div>
+
+                <!-- abubakr tort -->
+                <div class="product">
+                    <div class="product-slider">
+                        <img src="res\abubakr_tort.jpg" alt="Odi фото 1" class="product-img slide active">
+                        <img src="res\abubakr_tort_2.jpg" alt="Odi фото 2" class="product-img slide">
+                        <button class="slider-btn prev" aria-label="Oldingi rasm">&#8592;</button>
+                        <button class="slider-btn next" aria-label="Keyingi rasm">&#8594;</button>
+                    </div>
+                    <div class="product-content">
+                        <h3>Odi</h3>
+                        <p>Qisqo izox</p>
+                        <div class="price"> Ncha so'm </div>
+                        <a href="tel:+998914266662" class="btn">Buyurtma barish</a>
+                    </div>
+                </div>
+
+                <!-- dilrabo tort -->
+                <div class="product">
+                    <div class="product-slider">
+                        <img src="res\dilrabo_tort.jpg" alt="dilrabo_tort" class="product-img slide active">
+                        <img src="res\dilrabo_tort_2.jpg" alt="dilrabo_tort_2" class="product-img slide">
+                        <button class="slider-btn prev" aria-label="Oldingi rasm">&#8592;</button>
+                        <button class="slider-btn next" aria-label="Keyingi rasm">&#8594;</button>
+                    </div>
+                    <div class="product-content">
+                        <h3>Odi</h3>
+                        <p>Qisqo izox</p>
+                        <div class="price"> Ncha so'm </div>
+                        <a href="tel:+998914266662" class="btn">Buyurtma barish</a>
+                    </div>
+                </div>
+
+                <!-- go'k barak -->
+                <div class="product">
+                    <img src="res\gok_barak.jpg" alt="Go'k_barak" class="product-img">
                     <div class="product-content">
                         <h3>Go'k barak</h3>
                         <p>Bahoriy go'k barak</p>
@@ -295,8 +638,52 @@
                     </div>
                 </div>
 
+                <!-- jasminaxon tort -->
                 <div class="product">
-                    <img src="res\img20241126160624.jpg" alt="Odi" class="product-img">
+                    <div class="product-slider">
+                        <img src="res\jasminaxon_tort.jpg" alt="jasminaxon_tort" class="product-img slide active">
+                        <img src="res\jasminaxon_tort_2.jpg" alt="jasminaxon_tort_2" class="product-img slide">
+                        <button class="slider-btn prev" aria-label="Oldingi rasm">&#8592;</button>
+                        <button class="slider-btn next" aria-label="Keyingi rasm">&#8594;</button>
+                    </div>
+                    <div class="product-content">
+                        <h3>Odi</h3>
+                        <p>Qisqo izox</p>
+                        <div class="price"> Ncha so'm </div>
+                        <a href="tel:+998914266662" class="btn">Buyurtma barish</a>
+                    </div>
+                </div>
+
+                <!-- maftuna tort -->
+                <div class="product">
+                    <div class="product-slider">
+                        <img src="res\maftuna_tort.jpg" alt="maftuna_tort" class="product-img slide active">
+                        <img src="res\maftuna_tort_2.jpg" alt="maftuna_tort_2" class="product-img slide">
+                        <button class="slider-btn prev" aria-label="Oldingi rasm">&#8592;</button>
+                        <button class="slider-btn next" aria-label="Keyingi rasm">&#8594;</button>
+                    </div>
+                    <div class="product-content">
+                        <h3>Odi</h3>
+                        <p>Qisqo izox</p>
+                        <div class="price"> Ncha so'm </div>
+                        <a href="tel:+998914266662" class="btn">Buyurtma barish</a>
+                    </div>
+                </div>
+
+                <!-- img_20241126_104304 -->
+                <div class="product">
+                    <img src="res\img_20241126_104304.jpg" alt="img_20241126_104304" class="product-img">
+                    <div class="product-content">
+                        <h3>Odi</h3>
+                        <p>Qisqo izox</p>
+                        <div class="price"> Ncha so'm </div>
+                        <a href="tel:+998914266662" class="btn">Buyurtma qilish</a>
+                    </div>
+                </div>
+
+                <!-- img-20240930-wa0022 -->
+                <div class="product">
+                    <img src="res\img-20240930-wa0022.jpg" alt="img-20240930-wa0022" class="product-img">
                     <div class="product-content">
                         <h3>Odi</h3>
                         <p>Qisqo izox</p>
@@ -305,8 +692,9 @@
                     </div>
                 </div>
 
+                <!-- img-20240930-wa0023 -->
                 <div class="product">
-                    <img src="res\img20241127143853.jpg" alt="Odi" class="product-img">
+                    <img src="res\img-20240930-wa0023.jpg" alt="img-20240930-wa0023" class="product-img">
                     <div class="product-content">
                         <h3>Odi</h3>
                         <p>Qisqo izox</p>
@@ -315,8 +703,9 @@
                     </div>
                 </div>
 
+                <!-- img-20241003-wa0000 -->
                 <div class="product">
-                    <img src="res\img20241127143908.jpg" alt="Odi" class="product-img">
+                    <img src="res\img-20241003-wa0000.jpg" alt="img-20241003-wa0000" class="product-img">
                     <div class="product-content">
                         <h3>Odi</h3>
                         <p>Qisqo izox</p>
@@ -325,8 +714,9 @@
                     </div>
                 </div>
 
+                <!-- img20241123193637 -->
                 <div class="product">
-                    <img src="res\img20241127143944.jpg" alt="Odi" class="product-img">
+                    <img src="res\img20241123193637.jpg" alt="img20241123193637" class="product-img">
                     <div class="product-content">
                         <h3>Odi</h3>
                         <p>Qisqo izox</p>
@@ -335,8 +725,9 @@
                     </div>
                 </div>
 
+                <!-- img20241124095908 -->
                 <div class="product">
-                    <img src="res\photo_2025-06-24_13-18-20.jpg" alt="Odi" class="product-img">
+                    <img src="res\img20241124095908.jpg" alt="img20241124095908" class="product-img">
                     <div class="product-content">
                         <h3>Odi</h3>
                         <p>Qisqo izox</p>
@@ -345,8 +736,9 @@
                     </div>
                 </div>
 
+                <!-- img20241124095915 -->
                 <div class="product">
-                    <img src="res\photo_2025-06-24_13-18-48.jpg" alt="Odi" class="product-img">
+                    <img src="res\img20241124095915.jpg" alt="img20241124095915" class="product-img">
                     <div class="product-content">
                         <h3>Odi</h3>
                         <p>Qisqo izox</p>
@@ -355,8 +747,9 @@
                     </div>
                 </div>
 
+                <!-- img20241124095919 -->
                 <div class="product">
-                    <img src="res\img20241126155421.jpg" alt="Odi" class="product-img">
+                    <img src="res\img20241124095919.jpg" alt="img20241124095919" class="product-img">
                     <div class="product-content">
                         <h3>Odi</h3>
                         <p>Qisqo izox</p>
@@ -365,8 +758,9 @@
                     </div>
                 </div>
 
+                <!-- img20241126104147 -->
                 <div class="product">
-                    <img src="res\photo_2025-06-24_13-19-05.jpg" alt="Odi" class="product-img">
+                    <img src="res\img20241126104147.jpg" alt="img20241126104147" class="product-img">
                     <div class="product-content">
                         <h3>Odi</h3>
                         <p>Qisqo izox</p>
@@ -375,15 +769,9 @@
                     </div>
                 </div>
 
+                <!-- img20241126104157 -->
                 <div class="product">
-                    <div class="video-wrapper"
-                        style="position:relative;width:100%;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:15px;box-shadow:0 4px 15px rgba(0,0,0,0.08);margin-bottom:20px;">
-                        <iframe src="https://www.youtube.com/embed/V_zWTCbIzao?si=romidO4CF3tBKTyu"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
-                            style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:15px;"></iframe>
-                    </div>
+                    <img src="res\img20241126104157.jpg" alt="img20241126104157" class="product-img">
                     <div class="product-content">
                         <h3>Odi</h3>
                         <p>Qisqa izox</p>
@@ -391,6 +779,224 @@
                         <a href="tel:+998914266662" class="btn">Buyurtma barish</a>
                     </div>
                 </div>
+
+                <!-- img20241126150228 -->
+                <div class="product">
+                    <img src="res\img20241126150228.jpg" alt="img20241126150228" class="product-img">
+                    <div class="product-content">
+                        <h3>Odi</h3>
+                        <p>Qisqo izox</p>
+                        <div class="price"> Ncha so'm </div>
+                        <a href="tel:+998914266662" class="btn">Buyurtma barish</a>
+                    </div>
+                </div>
+
+                <!-- img20241126150313 -->
+                <div class="product">
+                    <img src="res\img20241126150313.jpg" alt="img20241126150313" class="product-img">
+                    <div class="product-content">
+                        <h3>Odi</h3>
+                        <p>Qisqo izox</p>
+                        <div class="price"> Ncha so'm </div>
+                        <a href="tel:+998914266662" class="btn">Buyurtma barish</a>
+                    </div>
+                </div>
+
+                <!-- img20241126155421 -->
+                <div class="product">
+                    <img src="res\img20241126155421.jpg" alt="img20241126155421" class="product-img">
+                    <div class="product-content">
+                        <h3>Odi</h3>
+                        <p>Qisqo izox</p>
+                        <div class="price"> Ncha so'm </div>
+                        <a href="tel:+998914266662" class="btn">Buyurtma barish</a>
+                    </div>
+                </div>
+
+                <!-- img20241126160624 -->
+                <div class="product">
+                    <img src="res\img20241126160624.jpg" alt="img20241126160624" class="product-img">
+                    <div class="product-content">
+                        <h3>Odi</h3>
+                        <p>Qisqo izox</p>
+                        <div class="price"> Ncha so'm </div>
+                        <a href="tel:+998914266662" class="btn">Buyurtma barish</a>
+                    </div>
+                </div>
+
+                <!-- img20241127143908 -->
+                <div class="product">
+                    <img src="res\img20241127143908.jpg" alt="img20241127143908" class="product-img">
+                    <div class="product-content">
+                        <h3>Odi</h3>
+                        <p>Qisqo izox</p>
+                        <div class="price"> Ncha so'm </div>
+                        <a href="tel:+998914266662" class="btn">Buyurtma barish</a>
+                    </div>
+                </div>
+
+                <!-- img20241127143944 -->
+                <div class="product">
+                    <img src="res\img20241127143944.jpg" alt="img20241127143944" class="product-img">
+                    <div class="product-content">
+                        <h3>Odi</h3>
+                        <p>Qisqo izox</p>
+                        <div class="price"> Ncha so'm </div>
+                        <a href="tel:+998914266662" class="btn">Buyurtma barish</a>
+                    </div>
+                </div>
+
+                <!-- photo_2025-06-24_13-19-05 -->
+                <div class="product">
+                    <img src="res\photo_2025-06-24_13-19-05.jpg" alt="photo_2025-06-24_13-19-05" class="product-img">
+                    <div class="product-content">
+                        <h3>Odi</h3>
+                        <p>Qisqo izox</p>
+                        <div class="price"> Ncha so'm </div>
+                        <a href="tel:+998914266662" class="btn">Buyurtma barish</a>
+                    </div>
+                </div>
+
+                <!-- photo_2025-06-24_13-19-09 -->
+                <div class="product">
+                    <img src="res/photo_2025-06-24_13-19-09.jpg" alt="photo_2025-06-24_13-19-09" class="product-img">
+                    <div class="product-content">
+                        <h3>Odi</h3>
+                        <p>Qisqo izox</p>
+                        <div class="price"> Ncha so'm </div>
+                        <a href="tel:+998914266662" class="btn">Buyurtma barish</a>
+                    </div>
+                </div>
+
+                <!-- photo_2025-06-24_13-19-15 -->
+                <div class="product">
+                    <img src="res\photo_2025-06-24_13-19-15.jpg" alt="photo_2025-06-24_13-19-15" class="product-img">
+                    <div class="product-content">
+                        <h3>Odi</h3>
+                        <p>Qisqo izox</p>
+                        <div class="price"> Ncha so'm </div>
+                        <a href="tel:+998914266662" class="btn">Buyurtma barish</a>
+                    </div>
+                </div>
+
+                <!-- photo_2025-06-24_13-20-55 photo_2025-06-24_13-20-59 -->
+                <div class="product">
+                    <div class="product-slider">
+                        <img src="res\photo_2025-06-24_13-20-55.jpg" alt="photo_2025-06-24_13-20-55"
+                            class="product-img slide active">
+                        <img src="res\photo_2025-06-24_13-20-59.jpg" alt="photo_2025-06-24_13-20-59"
+                            class="product-img slide">
+                        <button class="slider-btn prev" aria-label="Oldingi rasm">&#8592;</button>
+                        <button class="slider-btn next" aria-label="Keyingi rasm">&#8594;</button>
+                    </div>
+                    <div class="product-content">
+                        <h3>Odi</h3>
+                        <p>Qisqo izox</p>
+                        <div class="price"> Ncha so'm </div>
+                        <a href="tel:+998914266662" class="btn">Buyurtma barish</a>
+                    </div>
+                </div>
+
+                <!-- qizil_tort -->
+                <div class="product">
+                    <img src="res\qizil_tort.jpg" alt="qizil_tort" class="product-img">
+                    <div class="product-content">
+                        <h3>Qizil to'rt</h3>
+                        <p>Qisqo izox</p>
+                        <div class="price"> Ncha so'm </div>
+                        <a href="tel:+998914266662" class="btn">Buyurtma barish</a>
+                    </div>
+                </div>
+
+                <!-- rangli_barakla -->
+                <div class="product">
+                    <img src="res\rangli_barakla.jpg" alt="rangli_barakla" class="product-img">
+                    <div class="product-content">
+                        <h3>Har xil baraklar</h3>
+                        <p>Har xil mazali baraklar</p>
+                        <div class="price"> Ncha so'm </div>
+                        <a href="tel:+998914266662" class="btn">Buyurtma barish</a>
+                    </div>
+                </div>
+
+                <!-- shirinlik -->
+                <div class="product">
+                    <img src="res\shirinlik.jpg" alt="shirinlik" class="product-img">
+                    <div class="product-content">
+                        <h3>Odi</h3>
+                        <p>Qisqo izox</p>
+                        <div class="price"> Ncha so'm </div>
+                        <a href="tel:+998914266662" class="btn">Buyurtma barish</a>
+                    </div>
+                </div>
+
+                <!-- tumalaq_barak -->
+                <div class="product">
+                    <img src="res\tumalaq_barak.jpg" alt="tumalaq_barak" class="product-img">
+                    <div class="product-content">
+                        <h3>Mayda barak - pelmen</h3>
+                        <p>Go'shtli mayda barak</p>
+                        <div class="price"> Ncha so'm </div>
+                        <a href="tel:+998914266662" class="btn">Buyurtma barish</a>
+                    </div>
+                </div>
+
+                <!-- xadichabegim_tort -->
+                <div class="product">
+                    <img src="res\xadichabegim_tort.jpg" alt="xadichabegim_tort" class="product-img">
+                    <div class="product-content">
+                        <h3>Xadichabegim to'rti</h3>
+                        <p>Tig'ilgan kun uchun to'rt</p>
+                        <div class="price"> Ncha so'm </div>
+                        <a href="tel:+998914266662" class="btn">Buyurtma barish</a>
+                    </div>
+                </div>
+
+                <!-- S + D tort -->
+                <div class="product">
+                    <div class="product-slider">
+                        <img src="res/s+d_tort_2.jpg" alt="S+D_tort_2" class="product-img slide active">
+                        <img src="res/s+d_tort.jpg" alt="S+D_tort" class="product-img slide">
+                        <button class="slider-btn prev" aria-label="Oldingi rasm">&#8592;</button>
+                        <button class="slider-btn next" aria-label="Keyingi rasm">&#8594;</button>
+                    </div>
+                    <div class="product-content">
+                        <h3>Odi</h3>
+                        <p>Qisqo izox</p>
+                        <div class="price"> Ncha so'm </div>
+                        <a href="tel:+998914266662" class="btn">Buyurtma barish</a>
+                    </div>
+                </div>
+
+                <!--  2 donalik slayder shablon
+                <div class="product">
+                    <div class="product-slider">
+                        <img src="" alt="" class="product-img slide active">
+                        <img src="" alt="" class="product-img slide">
+                        <button class="slider-btn prev" aria-label="Oldingi rasm">&#8592;</button>
+                        <button class="slider-btn next" aria-label="Keyingi rasm">&#8594;</button>
+                    </div>
+                    <div class="product-content">
+                        <h3>Odi</h3>
+                        <p>Qisqo izox</p>
+                        <div class="price"> Ncha so'm </div>
+                        <a href="tel:+998914266662" class="btn">Buyurtma barish</a>
+                    </div>
+                </div>
+            -->
+
+                <!--  
+                <div class="product">
+                    <img src="" alt="" class="product-img">
+                    <div class="product-content">
+                        <h3>Odi</h3>
+                        <p>Qisqo izox</p>
+                        <div class="price"> Ncha so'm </div>
+                        <a href="tel:+998914266662" class="btn">Buyurtma barish</a>
+                    </div>
+                </div>
+            -->
+
             </div>
         </section>
 
@@ -418,11 +1024,7 @@
 
 
 
-    <!-- Кнопка "Вверх" -->
-    <button id="scroll-top" aria-label="Вверх" title="Вверх"
-        style="position:fixed;bottom:32px;right:32px;z-index:10010;background:#fff;color:var(--primary-color);border:none;border-radius:50%;width:56px;height:56px;box-shadow:0 4px 16px rgba(0,0,0,0.13);display:flex;align-items:center;justify-content:center;font-size:2em;cursor:pointer;transition:background 0.3s,box-shadow 0.3s;outline:none;">
-        <span style="pointer-events:none;">↑</span>
-    </button>
+
 
     <!-- Lightbox modal -->
     <div id="lightbox-modal"
@@ -434,11 +1036,57 @@
     </div>
 
     <script>
+        // --- O'zbekcha izohlar bilan JavaScript kodlari ---
 
-        // Theme toggle logic
+        // --- Mahsulot slayderi funksiyasi ---
+        // Har bir .product-slider uchun quyidagi kod ishlaydi
+        document.querySelectorAll('.product-slider').forEach(function (slider) {
+            // Barcha slaydlarni (img va iframe) tanlab olamiz
+            const slides = slider.querySelectorAll('.slide');
+            // Oldingi va keyingi tugmalarni tanlab olamiz
+            const prev = slider.querySelector('.slider-btn.prev');
+            const next = slider.querySelector('.slider-btn.next');
+            // Hozirgi ko'rsatilayotgan slayd indeksi
+            let idx = 0;
+            // Avtomatik slayd almashish uchun timer
+            let timer = null;
+            // Berilgan indeksdagi slaydni ko'rsatish funksiyasi
+            function show(i) {
+                // Har bir slayd uchun: faollik klassini faqat tanlanganiga qo'yamiz
+                slides.forEach((img, n) => img.classList.toggle('active', n === i));
+            }
+            // Keyingi slaydga o'tish funksiyasi (avto va tugma uchun)
+            function nextAuto() {
+                idx = (idx + 1) % slides.length;
+                show(idx);
+            }
+            // Avtomatik slayd almashishni boshlash
+            function startAuto() {
+                if (timer) clearInterval(timer); // Eski timer bo'lsa, to'xtatamiz
+                timer = setInterval(nextAuto, 7000); // 7 sekundda bir almashadi
+            }
+            // Oldingi tugma bosilganda
+            prev.onclick = function () {
+                idx = (idx - 1 + slides.length) % slides.length;
+                show(idx);
+                startAuto(); // Harakatdan so'ng avto qayta boshlanadi
+            };
+            // Keyingi tugma bosilganda
+            next.onclick = function () {
+                idx = (idx + 1) % slides.length;
+                show(idx);
+                startAuto();
+            };
+            // Dastlab avtomatik slayd almashishni boshlash
+            startAuto();
+        });
+
+        // --- Kun/Tun (Theme) almashtirish funksiyasi ---
         (function () {
+            // Theme toggle tugmasi va ikonkasini olamiz
             const btn = document.getElementById('theme-toggle');
             const icon = document.getElementById('theme-icon');
+            // Qorong'u va yorug' rejim uchun ranglar
             const darkVars = {
                 '--primary-color': '#22223b',
                 '--secondary-color': '#4a4e69',
@@ -453,59 +1101,75 @@
                 '--text-color': '#495057',
                 '--heading-color-light': '#d63384',
             };
+            // Tema o'zgartirish funksiyasi
             function setTheme(mode) {
+                // Ranglarni tanlab, :root ga o'rnatamiz
                 const vars = mode === 'dark' ? darkVars : lightVars;
                 for (const k in vars) document.documentElement.style.setProperty(k, vars[k]);
+                // Ikonkani o'zgartirish
                 icon.textContent = mode === 'dark' ? '☀️' : '🌙';
+                // Body ga dark klassini qo'shish yoki olib tashlash
                 document.body.classList.toggle('dark', mode === 'dark');
+                // Tanlangan temani localStorage ga saqlash
                 localStorage.setItem('theme', mode);
             }
+            // Saqlangan temani olish funksiyasi
             function getTheme() {
                 return localStorage.getItem('theme') || 'light';
             }
+            // Sahifa yuklanganda saqlangan temani o'rnatish
             setTheme(getTheme());
+            // Tugma bosilganda temani almashtirish
             btn.onclick = function () {
                 setTheme(getTheme() === 'dark' ? 'light' : 'dark');
             };
         })();
 
-        // Кнопка "Вверх"
+        // --- "Tepaga" tugmasi funksiyasi ---
+        // Tepaga qaytish tugmasini olamiz
         const scrollBtn = document.getElementById('scroll-top');
+        // Tugmani ko'rsatish/yashirish funksiyasi
         function toggleScrollBtn() {
+            // Agar sahifa 200px dan ko'p pastga aylantirilgan bo'lsa, tugma ko'rinadi
             if (window.scrollY > 200) {
                 scrollBtn.style.display = 'flex';
             } else {
                 scrollBtn.style.display = 'none';
             }
         }
+        // Sahifa aylantirilganda tugmani tekshirish
         window.addEventListener('scroll', toggleScrollBtn);
+        // Tugma bosilganda sahifaning yuqorisiga silliq qaytish
         scrollBtn.onclick = function () {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         };
-        // Скрыть кнопку при загрузке
+        // Sahifa yuklanganda tugmani yashirish
         toggleScrollBtn();
 
-
-
-        // Lightbox logic
+        // --- Lightbox (rasmni kattalashtirish) funksiyasi ---
+        // Barcha mahsulot rasmlariga bosilganda lightbox ochiladi
         document.querySelectorAll('.product-img').forEach(function (img) {
             img.addEventListener('click', function () {
+                // Modal oynani va rasmni olamiz
                 var modal = document.getElementById('lightbox-modal');
                 var modalImg = document.getElementById('lightbox-img');
+                // Bosilgan rasmni modalga o'rnatamiz
                 modalImg.src = this.src;
+                // Modal oynani ko'rsatamiz
                 modal.style.display = 'flex';
             });
         });
+        // Yopish tugmasi bosilganda modalni yopish
         document.getElementById('lightbox-close').onclick = function () {
             document.getElementById('lightbox-modal').style.display = 'none';
         };
-        // Закрытие по клику вне картинки
+        // Modal oynaning orqa foniga bosilganda ham yopiladi
         document.getElementById('lightbox-modal').addEventListener('click', function (e) {
             if (e.target === this) {
                 this.style.display = 'none';
             }
         });
-        // Закрытие по ESC
+        // Klaviaturadan ESC bosilganda ham modal yopiladi
         document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape') {
                 document.getElementById('lightbox-modal').style.display = 'none';
