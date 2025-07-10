@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Магазин сладостей</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --bg-light: #fff8f0;
+            --bg-dark: #23272f;
+            --text-light: #23272f;
+            --text-dark: #fff8f0;
+            --accent: #ff69b4;
+            --accent-hover: #e055a1;
+            --card-bg-light: #fff;
+            --card-bg-dark: #2d2d37;
+            --header-shadow: 0 4px 24px rgba(255, 105, 180, 0.10);
+            --card-shadow: 0 8px 32px rgba(44, 62, 80, 0.10);
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+            background: var(--bg-light);
+            color: var(--text-light);
+            transition: background 0.5s cubic-bezier(.4, 0, .2, 1), color 0.5s cubic-bezier(.4, 0, .2, 1);
+        }
+
+        .dark-mode {
+            background: var(--bg-dark);
+            color: var(--text-dark);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2.5rem;
+            background: var(--accent);
+            color: #fff;
+            border-radius: 0 0 1.5rem 1.5rem;
+            box-shadow: var(--header-shadow);
+            margin-bottom: 1.5rem;
+            transition: box-shadow 0.3s;
+        }
+
+        .theme-toggle {
+            background: rgba(255, 255, 255, 0.12);
+            border: none;
+            color: #fff;
+            font-size: 2rem;
+            cursor: pointer;
+            border-radius: 50%;
+            width: 2.7rem;
+            height: 2.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.22);
+            transform: scale(1.08) rotate(-10deg);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.2rem;
+            letter-spacing: 1px;
+            font-weight: 700;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+        }
+
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2.5rem;
+            justify-content: center;
+            padding: 2.5rem 1rem 2rem 1rem;
+            min-height: 70vh;
+        }
+
+        .card {
+            background: var(--card-bg-light);
+            border-radius: 1.5rem;
+            box-shadow: var(--card-shadow);
+            width: 260px;
+            padding: 1.5rem 1.2rem 1.2rem 1.2rem;
+            text-align: center;
+            transition: background 0.4s, box-shadow 0.3s, transform 0.3s, opacity 0.7s;
+            opacity: 0;
+            transform: translateY(40px) scale(0.97);
+            animation: cardIn 0.7s cubic-bezier(.4, 0, .2, 1) forwards;
+        }
+
+        .card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        @keyframes cardIn {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .card:hover {
+            box-shadow: 0 12px 36px rgba(255, 105, 180, 0.13), 0 2px 8px rgba(44, 62, 80, 0.10);
+            transform: translateY(-8px) scale(1.03);
+        }
+
+        .dark-mode .card {
+            background: var(--card-bg-dark);
+        }
+
+        .card img {
+            width: 110px;
+            height: 110px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 1.1rem;
+            box-shadow: 0 2px 12px rgba(255, 105, 180, 0.10);
+            border: 3px solid var(--accent);
+            transition: border 0.3s;
+        }
+
+        .card h2 {
+            margin: 0.7rem 0 0.3rem 0;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .card p {
+            margin: 0.5rem 0 1.2rem 0;
+            color: #666;
+            font-size: 1.05rem;
+        }
+
+        .dark-mode .card p {
+            color: #e0e0e0;
+        }
+
+        .buy-btn {
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            border-radius: 0.7rem;
+            padding: 0.6rem 1.5rem;
+            cursor: pointer;
+            font-size: 1.08rem;
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(255, 105, 180, 0.10);
+            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+        }
+
+        .buy-btn:hover {
+            background: var(--accent-hover);
+            transform: scale(1.07);
+            box-shadow: 0 6px 18px rgba(255, 105, 180, 0.18);
+        }
+
+        @media (max-width: 700px) {
+            main {
+                gap: 1.2rem;
+                padding: 1.2rem 0.2rem 1.2rem 0.2rem;
+            }
+
+            .card {
+                width: 95vw;
+                max-width: 340px;
+                padding: 1.1rem 0.5rem 1rem 0.5rem;
+            }
+
+            header {
+                padding: 0.7rem 1rem;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Магазин сладостей</h1>
+        <div style="display:flex;gap:1rem;align-items:center;">
+            <button class="theme-toggle" id="themeToggle" title="Сменить тему">🌙</button>
+            <button class="gallery-btn" id="galleryBtn"
+                style="background:var(--accent);color:#fff;border:none;border-radius:0.7rem;padding:0.6rem 1.3rem;font-size:1.08rem;font-weight:500;box-shadow:0 2px 8px rgba(255,105,180,0.10);cursor:pointer;transition:background 0.2s,transform 0.2s;">Галерея</button>
+        </div>
+    </header>
+    <main>
+        <div class="card">
+            <img src="res/img_20241123_131317.jpg" alt="img_20241123_131317">
+            <h2>Конфеты</h2>
+            <p>Вкусные шоколадные конфеты</p>
+            <button class="buy-btn">Купить</button>
+        </div>
+        <div class="card">
+            <img src="res/img_20241123_131339.jpg" alt="img_20241123_131339">
+            <h2>Печенье</h2>
+            <p>Домашнее рассыпчатое печенье</p>
+            <button class="buy-btn">Купить</button>
+        </div>
+        <div class="card">
+            <img src="res/img_20241123_131655.jpg" alt="img_20241123_131655">
+            <h2>Пирожные</h2>
+            <p>Свежие пирожные с кремом</p>
+            <button class="buy-btn">Купить</button>
+        </div>
+    </main>
+    <div id="imgModal"
+        style="display:none;position:fixed;z-index:1000;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.85);align-items:center;justify-content:center;cursor:zoom-out;transition:opacity 0.3s;">
+        <img id="modalImg" src="" alt=""
+            style="max-width:90vw;max-height:90vh;border-radius:1.5rem;box-shadow:0 8px 32px rgba(0,0,0,0.25);background:#fff;object-fit:contain;">
+    </div>
+    <div id="galleryModal"
+        style="display:none;position:fixed;z-index:2000;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.95);align-items:center;justify-content:center;flex-direction:column;cursor:default;transition:opacity 0.3s;">
+        <img id="galleryImg" src="res/img_20241123_131317.jpg" alt="Галерея"
+            style="max-width:95vw;max-height:80vh;border-radius:1.5rem;box-shadow:0 8px 32px rgba(0,0,0,0.25);background:#fff;object-fit:contain;">
+        <div style="margin-top:2.5rem;text-align:center;">
+            <div style="color:#fff;font-size:1.5rem;font-weight:600;letter-spacing:1px;">Индиры Пиширик</div>
+            <a href="tel:+77001234567"
+                style="display:inline-block;margin-top:0.7rem;font-size:1.25rem;color:#ff69b4;text-decoration:none;background:rgba(255,255,255,0.08);padding:0.5rem 1.2rem;border-radius:0.7rem;transition:background 0.2s;"
+                id="galleryPhone">+7 700 123 45 67</a>
+            <div style="margin-top:0.7rem;color:#bbb;font-size:1rem;">Для заказа звоните по номеру</div>
+        </div>
+    </div>
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        // Сохраняем тему в localStorage
+        let dark = localStorage.getItem('theme') === 'dark';
+        function applyTheme() {
+            body.classList.toggle('dark-mode', dark);
+            themeToggle.textContent = dark ? '☀️' : '🌙';
+        }
+        applyTheme();
+        themeToggle.onclick = () => {
+            dark = !dark;
+            localStorage.setItem('theme', dark ? 'dark' : 'light');
+            applyTheme();
+        };
+
+        // Модальное окно для просмотра фото
+        const imgModal = document.getElementById('imgModal');
+        const modalImg = document.getElementById('modalImg');
+        document.querySelectorAll('.card img').forEach(img => {
+            img.style.cursor = 'zoom-in';
+            img.addEventListener('click', e => {
+                modalImg.src = img.src;
+                modalImg.alt = img.alt;
+                imgModal.style.display = 'flex';
+                setTimeout(() => { imgModal.style.opacity = '1'; }, 10);
+            });
+        });
+        imgModal.addEventListener('click', e => {
+            if (e.target === imgModal) {
+                imgModal.style.opacity = '0';
+                setTimeout(() => { imgModal.style.display = 'none'; }, 300);
+            }
+        });
+        // ESC для выхода
+        document.addEventListener('keydown', e => {
+            if (imgModal.style.display === 'flex' && (e.key === 'Escape' || e.key === 'Esc')) {
+                imgModal.style.opacity = '0';
+                setTimeout(() => { imgModal.style.display = 'none'; }, 300);
+            }
+        });
+
+        // Галерея
+        const galleryBtn = document.getElementById('galleryBtn');
+        const galleryModal = document.getElementById('galleryModal');
+        const galleryImg = document.getElementById('galleryImg');
+        galleryBtn.addEventListener('click', () => {
+            galleryModal.style.display = 'flex';
+            setTimeout(() => { galleryModal.style.opacity = '1'; }, 10);
+        });
+        galleryModal.addEventListener('click', e => {
+            if (e.target === galleryModal) {
+                galleryModal.style.opacity = '0';
+                setTimeout(() => { galleryModal.style.display = 'none'; }, 300);
+            }
+        });
+        document.addEventListener('keydown', e => {
+            if (galleryModal.style.display === 'flex' && (e.key === 'Escape' || e.key === 'Esc')) {
+                galleryModal.style.opacity = '0';
+                setTimeout(() => { galleryModal.style.display = 'none'; }, 300);
+            }
+        });
+
+        // Кнопки "Купить" — звонок по номеру
+        document.querySelectorAll('.buy-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                window.location.href = 'tel:+998914266662';
+            });
+        });
+    </script>
+</body>
+
+</html>

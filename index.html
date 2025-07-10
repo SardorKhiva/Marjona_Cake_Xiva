@@ -10,6 +10,51 @@
     <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:wght@400;700&display=swap"
         rel="stylesheet">
     <style>
+        /* Кнопка смены темы (день/ночь) */
+        #theme-toggle {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            z-index: 10010;
+            background: var(--primary-color);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.13);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: background 0.3s, box-shadow 0.3s;
+            outline: none;
+        }
+
+        @media (max-width: 600px) {
+            #theme-toggle {
+                top: 12px;
+                right: 12px;
+                width: 40px;
+                height: 40px;
+                font-size: 1.1em;
+            }
+        }
+
+        @media (max-width: 900px) {
+            #theme-toggle {
+                top: 12px;
+                right: 12px;
+            }
+        }
+
+        nav {
+            position: relative;
+        }
+
+
+
         :root {
             --primary-color: #d63384;
             --secondary-color: #ffb6c1;
@@ -17,6 +62,7 @@
             --text-color: #495057;
             --heading-font: 'Lobster', cursive;
             --body-font: 'Montserrat', sans-serif;
+            --heading-color-light: var(--primary-color);
         }
 
         body {
@@ -32,6 +78,7 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            /* color: yellow; */
         }
 
         header {
@@ -87,8 +134,16 @@
             text-align: center;
             font-family: var(--heading-font);
             font-size: 3em;
-            color: var(--primary-color);
+            color: var(--heading-color-light);
+            cursor: pointer;
             margin-bottom: 40px;
+            transition: color 0.3s;
+        }
+
+        section p {
+            cursor: pointer;
+            color: #ff0000;
+            transition: color 0.3s;
         }
 
         .products {
@@ -113,10 +168,26 @@
 
         .product img {
             width: 100%;
-            height: 250px;
-            object-fit: contain;
+            aspect-ratio: 4/3;
+            height: auto;
+            object-fit: cover;
             background: #fff;
             display: block;
+            border-radius: 18px;
+            box-shadow: 0 2px 16px rgba(214, 51, 132, 0.08);
+            transition: box-shadow 0.3s, border-radius 0.3s;
+        }
+
+        /* Скругление для всех img внутри .product и .video-wrapper */
+        .product img,
+        .video-wrapper img,
+        .video-wrapper iframe {
+            border-radius: 18px;
+        }
+
+        .product img:hover {
+            box-shadow: 0 6px 32px rgba(214, 51, 132, 0.18);
+            border-radius: 28px;
         }
 
         .product-content {
@@ -181,12 +252,23 @@
             padding: 20px 0;
             margin-top: 40px;
         }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9em;
+        }
     </style>
 </head>
 
 <body>
     <header>
         <h1>🍰𝐌𝐚𝐫𝐣𝐨𝐧𝐚 𝐂𝐚𝐤𝐞 𝐗𝐢𝐯𝐚 🎂</h1>
+
+        <!-- Кнопка смены темы (день/ночь) -->
+        <button id="theme-toggle" aria-label="Сменить тему" title="День/Ночь">
+            <span id="theme-icon">🌙</span>
+        </button>
+
         <p>Mehr bilan tayyorlangan to'rt va pishiriqlari</p>
     </header>
 
@@ -201,111 +283,96 @@
     <div class="container">
         <section id="products">
             <h2>Bizning shirin menyumiz</h2>
-            <div class="products">
-                <!--
 
-<div class="product">
-<img src="https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?auto=format&fit=crop&w=400&q=80" alt="Tort">
-<div class="product-content">
-<h3>Tort "Shokoladli jannat"</h3>
-<p>Yumshoq shokoladli biskvit, krem va yangi rezavorlar bilan.</p>
-<div class="price">250 000 so'm</div>
-<a href="#contact" class="btn">Buyurtma qilish</a>
-</div>
-</div>
-<div class="product">
-<img src="https://images.unsplash.com/photo-1558326567-98ae2405596b?auto=format&fit=crop&w=400&q=80" alt="Kapkeyklar">
-<div class="product-content">
-<h3>Kapkeyk "Vanil buluti"</h3>
-<p>Yengil kapkeyklar, yumshoq saryog'li krem bilan.</p>
-<div class="price">120 000 so'm / 6 dona</div>
-<a href="#contact" class="btn">Buyurtma qilish</a>
-</div>
-</div>
-<div class="product">
-<img src="https://images.unsplash.com/photo-1618344155521-4f1b8853b0a7?auto=format&fit=crop&w=400&q=80" alt="Makaronlar">
-<div class="product-content">
-<h3>Makaron "Assorti"</h3>
-<p>Turli xil nachinkali fransuz pishiriqlari.</p>
-<div class="price">90 000 so'm / 8 dona</div>
-<a href="#contact" class="btn">Buyurtma qilish</a>
-</div>
-</div>
-                    -->
+            <div class="products">
                 <div class="product">
-                    <img src="res\IMG_20241123_131317.jpg" alt="" class="product-img">
+                    <img src="res\img_20241123_131317.jpg" alt="Go'k barak" class="product-img">
                     <div class="product-content">
                         <h3>Go'k barak</h3>
                         <p>Bahoriy go'k barak</p>
                         <div class="price">Mahsulot narhi</div>
-                        <a href="#contact" class="btn">Buyurtma qilish</a>
+                        <a href="tel:+998914266662" class="btn">Buyurtma qilish</a>
                     </div>
                 </div>
 
                 <div class="product">
-                    <img src="res\IMG20241126160624.jpg" alt="" class="product-img">
-                    <div class="product-content"></div>
-                    <h3>Odi</h3>
-                    <p>Qisqo izox</p>
-                    <div class="price">Ncha so'mliqi</div>
-                    <a href="#contact" class="btn">Buyurtma barish</a>
-                </div>
-                <div class="product">
-                    <img src="res\IMG20241127143853.jpg" alt="" class="product-img">
-                    <div class="product-content"></div>
-                    <h3>Odi</h3>
-                    <p>Qisqo izox</p>
-                    <div class="price">Ncha so'mliqi</div>
-                    <a href="#contact" class="btn">Buyurtma barish</a>
-                </div>
-                <div class="product">
-                    <img src="res\IMG20241127143908.jpg" alt="" class="product-img">
-                    <div class="product-content"></div>
-                    <h3>Odi</h3>
-                    <p>Qisqo izox</p>
-                    <div class="price">Ncha so'mliqi</div>
-                    <a href="#contact" class="btn">Buyurtma barish</a>
-                </div>
-                <div class="product">
-                    <img src="res\IMG20241127143944.jpg" alt="" class="product-img">
-                    <div class="product-content"></div>
-                    <h3>Odi</h3>
-                    <p>Qisqo izox</p>
-                    <div class="price">Ncha so'mliqi</div>
-                    <a href="#contact" class="btn">Buyurtma barish</a>
-                </div>
-                <div class="product">
-                    <img src="res\photo_2025-06-24_13-18-20.jpg" alt="" class="product-img">
-                    <div class="product-content"></div>
-                    <h3>Odi</h3>
-                    <p>Qisqo izox</p>
-                    <div class="price">Ncha so'mliqi</div>
-                    <a href="#contact" class="btn">Buyurtma barish</a>
-                </div>
-                <div class="product">
-                    <img src="res\photo_2025-06-24_13-18-48.jpg" alt="" class="product-img">
-                    <div class="product-content"></div>
-                    <h3>Odi</h3>
-                    <p>Qisqo izox</p>
-                    <div class="price">Ncha so'mliqi</div>
-                    <a href="#contact" class="btn">Buyurtma barish</a>
-                </div>
-                <div class="product">
-                    <img src="res\IMG20241126155421.jpg" alt="" class="product-img">
-                    <div class="product-content"></div>
-                    <h3>Odi</h3>
-                    <p>Qisqo izox</p>
-                    <div class="price">Ncha so'mliqi</div>
-                    <a href="#contact" class="btn">Buyurtma barish</a>
+                    <img src="res\img20241126160624.jpg" alt="Odi" class="product-img">
+                    <div class="product-content">
+                        <h3>Odi</h3>
+                        <p>Qisqo izox</p>
+                        <div class="price">Ncha so'mliqi</div>
+                        <a href="tel:+998914266662" class="btn">Buyurtma barish</a>
+                    </div>
                 </div>
 
                 <div class="product">
-                    <img src="res\photo_2025-06-24_13-19-05.jpg" alt="" class="product-img">
-                    <div class="product-content"></div>
-                    <h3>Odi</h3>
-                    <p>Qisqo izox</p>
-                    <div class="price">Ncha so'mliqi</div>
-                    <a href="#contact" class="btn">Buyurtma barish</a>
+                    <img src="res\img20241127143853.jpg" alt="Odi" class="product-img">
+                    <div class="product-content">
+                        <h3>Odi</h3>
+                        <p>Qisqo izox</p>
+                        <div class="price">Ncha so'mliqi</div>
+                        <a href="tel:+998914266662" class="btn">Buyurtma barish</a>
+                    </div>
+                </div>
+
+                <div class="product">
+                    <img src="res\img20241127143908.jpg" alt="Odi" class="product-img">
+                    <div class="product-content">
+                        <h3>Odi</h3>
+                        <p>Qisqo izox</p>
+                        <div class="price">Ncha so'mliqi</div>
+                        <a href="tel:+998914266662" class="btn">Buyurtma barish</a>
+                    </div>
+                </div>
+
+                <div class="product">
+                    <img src="res\img20241127143944.jpg" alt="Odi" class="product-img">
+                    <div class="product-content">
+                        <h3>Odi</h3>
+                        <p>Qisqo izox</p>
+                        <div class="price">Ncha so'mliqi</div>
+                        <a href="tel:+998914266662" class="btn">Buyurtma barish</a>
+                    </div>
+                </div>
+
+                <div class="product">
+                    <img src="res\photo_2025-06-24_13-18-20.jpg" alt="Odi" class="product-img">
+                    <div class="product-content">
+                        <h3>Odi</h3>
+                        <p>Qisqo izox</p>
+                        <div class="price">Ncha so'mliqi</div>
+                        <a href="tel:+998914266662" class="btn">Buyurtma barish</a>
+                    </div>
+                </div>
+
+                <div class="product">
+                    <img src="res\photo_2025-06-24_13-18-48.jpg" alt="Odi" class="product-img">
+                    <div class="product-content">
+                        <h3>Odi</h3>
+                        <p>Qisqo izox</p>
+                        <div class="price">Ncha so'mliqi</div>
+                        <a href="tel:+998914266662" class="btn">Buyurtma barish</a>
+                    </div>
+                </div>
+
+                <div class="product">
+                    <img src="res\img20241126155421.jpg" alt="Odi" class="product-img">
+                    <div class="product-content">
+                        <h3>Odi</h3>
+                        <p>Qisqo izox</p>
+                        <div class="price">Ncha so'mliqi</div>
+                        <a href="tel:+998914266662" class="btn">Buyurtma barish</a>
+                    </div>
+                </div>
+
+                <div class="product">
+                    <img src="res\photo_2025-06-24_13-19-05.jpg" alt="Odi" class="product-img">
+                    <div class="product-content">
+                        <h3>Odi</h3>
+                        <p>Qisqo izox</p>
+                        <div class="price">Ncha so'mliqi</div>
+                        <a href="tel:+998914266662" class="btn">Buyurtma barish</a>
+                    </div>
                 </div>
 
                 <div class="product">
@@ -317,13 +384,13 @@
                             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
                             style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:15px;"></iframe>
                     </div>
-                    <div class="product-content"></div>
-                    <h3>Odi</h3>
-                    <p>Qisqa izox</p>
-                    <div class="price">Ncha so'mliqi</div>
-                    <a href="#contact" class="btn">Buyurtma barish</a>
+                    <div class="product-content">
+                        <h3>Odi</h3>
+                        <p>Qisqa izox</p>
+                        <div class="price">Ncha so'mliqi</div>
+                        <a href="tel:+998914266662" class="btn">Buyurtma barish</a>
+                    </div>
                 </div>
-
             </div>
         </section>
 
@@ -341,8 +408,6 @@
             <p>Buyurtma berish yoki o'zgacha dizayn muhokama qilish uchun biz bilan bog'laning!</p>
             <ul>
                 <li><strong>Telefon:</strong> <a href="tel:+998914266662">+998 91 426 66 62</a></li>
-                <li><strong>Instagram:</strong> <a href="https://www.instagram.com/marjona_cake_xiva"
-                        target="_blank">@marjona_cake_xiva</a></li>
             </ul>
         </section>
     </div>
@@ -350,6 +415,14 @@
     <footer>
         <p>&copy; 2025 Marjona Cake Xiva. Mehr bilan tayyorlangan.</p>
     </footer>
+
+
+
+    <!-- Кнопка "Вверх" -->
+    <button id="scroll-top" aria-label="Вверх" title="Вверх"
+        style="position:fixed;bottom:32px;right:32px;z-index:10010;background:#fff;color:var(--primary-color);border:none;border-radius:50%;width:56px;height:56px;box-shadow:0 4px 16px rgba(0,0,0,0.13);display:flex;align-items:center;justify-content:center;font-size:2em;cursor:pointer;transition:background 0.3s,box-shadow 0.3s;outline:none;">
+        <span style="pointer-events:none;">↑</span>
+    </button>
 
     <!-- Lightbox modal -->
     <div id="lightbox-modal"
@@ -361,6 +434,59 @@
     </div>
 
     <script>
+
+        // Theme toggle logic
+        (function () {
+            const btn = document.getElementById('theme-toggle');
+            const icon = document.getElementById('theme-icon');
+            const darkVars = {
+                '--primary-color': '#22223b',
+                '--secondary-color': '#4a4e69',
+                '--background-color': '#181825',
+                '--text-color': '#f8f8f2',
+                '--heading-color-light': '#ffb6c1',
+            };
+            const lightVars = {
+                '--primary-color': '#d63384',
+                '--secondary-color': '#ffb6c1',
+                '--background-color': '#fffafb',
+                '--text-color': '#495057',
+                '--heading-color-light': '#d63384',
+            };
+            function setTheme(mode) {
+                const vars = mode === 'dark' ? darkVars : lightVars;
+                for (const k in vars) document.documentElement.style.setProperty(k, vars[k]);
+                icon.textContent = mode === 'dark' ? '☀️' : '🌙';
+                document.body.classList.toggle('dark', mode === 'dark');
+                localStorage.setItem('theme', mode);
+            }
+            function getTheme() {
+                return localStorage.getItem('theme') || 'light';
+            }
+            setTheme(getTheme());
+            btn.onclick = function () {
+                setTheme(getTheme() === 'dark' ? 'light' : 'dark');
+            };
+        })();
+
+        // Кнопка "Вверх"
+        const scrollBtn = document.getElementById('scroll-top');
+        function toggleScrollBtn() {
+            if (window.scrollY > 200) {
+                scrollBtn.style.display = 'flex';
+            } else {
+                scrollBtn.style.display = 'none';
+            }
+        }
+        window.addEventListener('scroll', toggleScrollBtn);
+        scrollBtn.onclick = function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+        // Скрыть кнопку при загрузке
+        toggleScrollBtn();
+
+
+
         // Lightbox logic
         document.querySelectorAll('.product-img').forEach(function (img) {
             img.addEventListener('click', function () {
